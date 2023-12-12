@@ -7,4 +7,13 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/lyriks/',
   plugins: [react()],
+  server: {
+    // Enable history API fallback
+    fs: {
+      allow: ['..'],
+    },
+    history: {
+      disableDotRule: true,
+    },
+  },
 });

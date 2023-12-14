@@ -8,7 +8,7 @@ const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <Router basename="/lyriks">
+    <Router>
       <div className="relative flex">
         <Sidebar />
         <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
@@ -18,7 +18,6 @@ const App = () => {
             <div className="flex-1 h-fit pb-40">
               <Routes>
                 <Route path="/" element={<Discover />} />
-                <Route path="/discover" element={<Discover />} />
                 <Route path="/top-artists" element={<TopArtists />} />
                 <Route path="/top-charts" element={<TopCharts />} />
                 <Route path="/around-you" element={<AroundYou />} />

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './components';
 import { ArtistDetails, TopArtists, AroundYou, Discover, Search, SongDetails, TopCharts } from './pages';
@@ -8,7 +8,7 @@ const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <Router>
+    <Router basename="/lyriks">
       <div className="relative flex">
         <Sidebar />
         <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
@@ -18,6 +18,7 @@ const App = () => {
             <div className="flex-1 h-fit pb-40">
               <Routes>
                 <Route path="/" element={<Discover />} />
+                <Route path="/discover" element={<Discover />} />
                 <Route path="/top-artists" element={<TopArtists />} />
                 <Route path="/top-charts" element={<TopCharts />} />
                 <Route path="/around-you" element={<AroundYou />} />

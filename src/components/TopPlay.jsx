@@ -60,29 +60,38 @@ const TopPlay = () => {
   return (
     <div className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[400px] max-w-full flex flex-col" ref={divRef}>
       <div className="w-full flex flex-col">
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={15}
-          freeMode
+        <div className="flex w-full flex-col">
+          <div className="flex flow-row justify-between items-center">
+            <h2 className="text-white font-bold text-2xl pt-4 ">Top 5 Artists</h2>
+            <Link to="/top-artists">
+              <p className="text-base text-gray-300 cursor-pointer">See More</p>
+            </Link>
+          </div>
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={15}
+            freeMode
           // centeredSlides
-          modules={[FreeMode]}
-          className="mt-4"
-        >
-          {topPlays?.map((song, i) => (
-            <SwiperSlide
-              key={song?.key}
-              i={i}
-              style={{ width: '25%', height: 'auto' }}
-              className="shadow-lg rounded-full animate-slideright"
-            >
-              <Link to={`/artists/${song?.artists[0].adamid}`}>
-                <img src={song?.images.background} alt="Cover Art" className="rounded-full w-full object-cover" />
-                <p className="text-white">{song?.subtitle}</p>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="flex flow-row justify-between items-center">
+            modules={[FreeMode]}
+            className="mt-4"
+          >
+            {topPlays?.map((song, i) => (
+              <SwiperSlide
+                key={song?.key}
+                i={i}
+                style={{ width: '25%', height: 'auto' }}
+                className="shadow-lg rounded-full animate-slideright"
+              >
+                <Link to={`/artists/${song?.artists[0].adamid}`}>
+                  <img src={song?.images.background} alt="Cover Art" className="rounded-full w-full object-cover" />
+                  <p className="text-white">{song?.subtitle}</p>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="flex flow-row justify-between items-center mt-10">
           <h2 className="text-white font-bold text-2xl">Top 5 Charts</h2>
           <Link to="/top-charts">
             <p className="text-base text-gray-300 cursor-pointer">See More</p>
@@ -102,15 +111,7 @@ const TopPlay = () => {
           ))}
         </div>
       </div>
-      <div className="flex w-full flex-col mt-8">
-        <div className="flex flow-row justify-between items-center">
-          <h2 className="text-white font-bold text-2xl pt-4 ">Top 5 Artists</h2>
-          <Link to="/top-artists">
-            <p className="text-base text-gray-300 cursor-pointer">See More</p>
-          </Link>
-        </div>
 
-      </div>
     </div>
   );
 };
